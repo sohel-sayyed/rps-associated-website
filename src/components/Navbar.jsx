@@ -1,12 +1,19 @@
-import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
   Download,
   ArrowUpRight,
+  LogIn,
+  UserPlus,
+  LayoutDashboard,
+  LogOut,
 } from "lucide-react";
+
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -19,16 +26,52 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loggingOut, setLoggingOut] = useState(false);
+
+  const navigate = useNavigate();
+
+  /*
+   * Firebase authentication state
+   */
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const closeMenu = () => {
     setMenuOpen(false);
+  };
+
+  /*
+   * Logout
+   */
+  const handleLogout = async () => {
+    try {
+      setLoggingOut(true);
+
+      await signOut(auth);
+
+      closeMenu();
+      navigate("/");
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("Unable to logout. Please try again.");
+    } finally {
+      setLoggingOut(false);
+    }
   };
 
   return (
     <header className="site-header">
       <div className="navbar">
 
-        {/* Logo */}
+        {/* =========================
+            LOGO
+        ========================== */}
         <Link
           to="/"
           className="brand"
@@ -50,7 +93,9 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* =========================
+            DESKTOP NAVIGATION
+        ========================== */}
         <nav className="desktop-nav">
           {navItems.map((item) => (
             <NavLink
@@ -66,16 +111,62 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <Link
-          to="/app"
-          className="nav-download"
-        >
-          <Download size={16} />
-          <span>Get the App</span>
-        </Link>
+        {/* =========================
+            DESKTOP AUTH / DASHBOARD
+        ========================== */}
+        <div className="navbar-actions">
 
-        {/* Mobile Menu Button */}
+          {user ? (
+            <>
+              {/* Dashboard */}
+              <Link
+                to="/dashboard"
+                className="nav-download"
+              >
+                <LayoutDashboard size={16} />
+                <span>Dashboard</span>
+              </Link>
+
+              {/* Logout */}
+              <button
+                type="button"
+                className="nav-logout"
+                onClick={handleLogout}
+                disabled={loggingOut}
+              >
+                <LogOut size={16} />
+                <span>
+                  {loggingOut ? "Logging out..." : "Logout"}
+                </span>
+              </button>
+            </>
+          ) : (
+            <>
+              {/* Login */}
+              <Link
+                to="/login"
+                className="nav-login"
+              >
+                <LogIn size={16} />
+                <span>Login</span>
+              </Link>
+
+              {/* Create Account */}
+              <Link
+                to="/signup"
+                className="nav-download"
+              >
+                <UserPlus size={16} />
+                <span>Create Account</span>
+              </Link>
+            </>
+          )}
+
+        </div>
+
+        {/* =========================
+            MOBILE MENU BUTTON
+        ========================== */}
         <button
           className="mobile-menu-button"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -94,7 +185,9 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* =========================
+          MOBILE NAVIGATION
+      ========================== */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -115,6 +208,8 @@ export default function Navbar() {
               duration: 0.25,
             }}
           >
+
+            {/* Main navigation */}
             {navItems.map((item) => (
               <NavLink
                 key={item.label}
@@ -134,7 +229,63 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            {/* Mobile CTA */}
+            {/* =========================
+                MOBILE AUTH
+            ========================== */}
+
+            {user ? (
+              <>
+                {/* Dashboard */}
+                <Link
+                  to="/dashboard"
+                  onClick={closeMenu}
+                  className="mobile-download"
+                >
+                  <LayoutDashboard size={17} />
+                  <span>Dashboard</span>
+                </Link>
+
+                {/* Logout */}
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  disabled={loggingOut}
+                  className="mobile-logout"
+                >
+                  <LogOut size={17} />
+
+                  <span>
+                    {loggingOut
+                      ? "Logging out..."
+                      : "Logout"}
+                  </span>
+                </button>
+              </>
+            ) : (
+              <>
+                {/* Login */}
+                <Link
+                  to="/login"
+                  onClick={closeMenu}
+                  className="mobile-nav-link"
+                >
+                  <span>Login</span>
+                  <LogIn size={17} />
+                </Link>
+
+                {/* Signup */}
+                <Link
+                  to="/signup"
+                  onClick={closeMenu}
+                  className="mobile-download"
+                >
+                  <UserPlus size={17} />
+                  <span>Create Account</span>
+                </Link>
+              </>
+            )}
+
+            {/* Get App */}
             <Link
               to="/app"
               onClick={closeMenu}
@@ -143,6 +294,7 @@ export default function Navbar() {
               <Download size={17} />
               <span>Get the App</span>
             </Link>
+
           </motion.div>
         )}
       </AnimatePresence>

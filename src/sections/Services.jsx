@@ -3,55 +3,60 @@ import {
   Shirt,
   WashingMachine,
   Truck,
-  ArrowUpRight,
   Sparkles,
   CheckCircle2,
-  Smartphone,
+  ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const services = [
   {
-    number: "01",
     icon: Shirt,
     title: "Professional Ironing",
     description:
       "Get your everyday clothes professionally pressed, crisp and ready to wear.",
-    features: ["Shirts", "Trousers", "T-Shirts"],
+    features: [
+      "Shirts",
+      "Trousers",
+      "T-Shirts",
+      "Dresses",
+      "Other Clothing",
+    ],
   },
   {
-    number: "02",
     icon: WashingMachine,
     title: "Laundry Care",
     description:
       "Reliable washing and folding service that takes care of your clothes from start to finish.",
-    features: ["Wash & Fold", "Everyday Wear", "Clothing Care"],
+    features: [
+      "Wash & Fold",
+      "Everyday Wear",
+      "Delicate Fabric Care",
+      "Clothing Care",
+    ],
   },
   {
-    number: "03",
     icon: Truck,
     title: "Pickup & Delivery",
     description:
       "We collect your clothes and bring them back to your doorstep when they are ready.",
-    features: ["Doorstep Pickup", "Easy Tracking", "Home Delivery"],
+    features: [
+      "Doorstep Pickup",
+      "Real-time Updates",
+      "Easy Tracking",
+      "Home Delivery",
+    ],
   },
-];
-
-const benefits = [
-  "Professional clothing care",
-  "Convenient doorstep service",
-  "Easy order tracking",
-  "Simple booking through the app",
 ];
 
 export default function Services() {
   return (
-    <section className="services-section" id="services">
+    <main className="services-section">
       <div className="services-container">
 
-        {/* =====================================================
+        {/* =========================
             PAGE INTRO
-        ===================================================== */}
+        ========================== */}
 
         <motion.div
           className="services-heading"
@@ -76,21 +81,23 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* =====================================================
+
+        {/* =========================
             SERVICE CARDS
-        ===================================================== */}
+        ========================== */}
 
         <div className="services-grid">
+
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <motion.article
                 className="service-card"
-                key={service.number}
+                key={service.title}
                 initial={{
                   opacity: 0,
-                  y: 35,
+                  y: 30,
                 }}
                 animate={{
                   opacity: 1,
@@ -101,53 +108,67 @@ export default function Services() {
                   delay: index * 0.12,
                 }}
               >
-                {/* Top */}
-                <div className="service-card-top">
-                  <span className="service-number">
-                    {service.number}
-                  </span>
 
-                  <div className="service-card-icon">
-                    <Icon
-                      size={25}
-                      strokeWidth={1.8}
-                    />
-                  </div>
+                {/* Icon */}
+
+                <div className="service-card-icon">
+                  <Icon
+                    size={28}
+                    strokeWidth={1.8}
+                  />
                 </div>
 
-                {/* Content */}
+
+                {/* Title */}
+
                 <h3>{service.title}</h3>
+
+
+                {/* Small divider */}
+
+                <div className="service-card-divider"></div>
+
+
+                {/* Description */}
 
                 <p>{service.description}</p>
 
-                {/* Features */}
-                <div className="service-features">
-                  {service.features.map((feature) => (
-                    <span key={feature}>
-                      {feature}
-                    </span>
-                  ))}
+
+                {/* Includes */}
+
+                <div className="service-includes">
+
+                  <strong>Includes</strong>
+
+                  <div className="service-includes-list">
+
+                    {service.features.map((feature) => (
+                      <div
+                        className="service-feature"
+                        key={feature}
+                      >
+                        <CheckCircle2 size={16} />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+
+                  </div>
+
                 </div>
 
-                {/* Link */}
-                <Link
-                  to="/contact"
-                  className="service-link"
-                >
-                  Learn more
-                  <ArrowUpRight size={17} />
-                </Link>
               </motion.article>
             );
           })}
+
         </div>
 
-        {/* =====================================================
-            WHY RPS
-        ===================================================== */}
+
+        {/* =========================
+            PLACE ORDER CTA
+        ========================== */}
 
         <motion.div
-          className="services-benefits"
+          className="services-order-cta"
           initial={{
             opacity: 0,
             y: 30,
@@ -161,49 +182,35 @@ export default function Services() {
             delay: 0.35,
           }}
         >
-          <div className="services-benefits-content">
 
-            <div className="section-label">
-              <Sparkles size={14} />
-              <span>WHY RPS ASSOCIATIED</span>
-            </div>
+          <div className="services-order-icon">
+            <Shirt size={30} />
+          </div>
+
+          <div className="services-order-content">
 
             <h3>
-              Professional care,
-              <span> without the hassle.</span>
+              Ready to get your clothes cared for?
             </h3>
 
             <p>
-              We make clothing care easier by combining professional
-              handling with convenient pickup, delivery and simple
-              order management.
+              Book our services in just a few simple steps.
             </p>
 
-            <Link
-              to="/app"
-              className="services-app-button"
-            >
-              <Smartphone size={17} />
-              Get the RPS App
-              <ArrowUpRight size={16} />
-            </Link>
-
           </div>
 
-          <div className="services-benefits-list">
-            {benefits.map((benefit) => (
-              <div
-                className="services-benefit-item"
-                key={benefit}
-              >
-                <CheckCircle2 size={18} />
-                <span>{benefit}</span>
-              </div>
-            ))}
-          </div>
+
+          <Link
+            to="/book-service"
+            className="services-order-button"
+          >
+            <span>Place Order</span>
+            <ArrowRight size={19} />
+          </Link>
+
         </motion.div>
 
       </div>
-    </section>
+    </main>
   );
 }

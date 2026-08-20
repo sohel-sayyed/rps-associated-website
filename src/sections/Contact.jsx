@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -7,6 +8,9 @@ import {
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
+
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../config/firebase";
 
 const contactDetails = [
   {
@@ -36,6 +40,66 @@ const contactDetails = [
 ];
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    try {
+      await addDoc(collection(db, "contactMessages"), {
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        createdAt: serverTimestamp(),
+      });
+
+      setSuccessMessage(
+        "Thank you! Your message has been sent successfully."
+      );
+
+      // Clear form after successful submission
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+
+      setErrorMessage(
+        "Something went wrong. Please try again later."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
@@ -122,46 +186,99 @@ export default function Contact() {
 
             <form
               className="contact-form"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
             >
+
+              {/* Name + Phone */}
               <div className="contact-form-row">
+
                 <div className="contact-field">
-                  <label>Name</label>
+                  <label htmlFor="contact-name">Name</label>
+
                   <input
+                    id="contact-name"
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your name"
+                    required
                   />
                 </div>
 
                 <div className="contact-field">
-                  <label>Phone</label>
+                  <label htmlFor="contact-phone">Phone</label>
+
                   <input
+                    id="contact-phone"
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                     placeholder="Your phone number"
+                    required
                   />
                 </div>
+
               </div>
 
+              {/* Email */}
               <div className="contact-field">
-                <label>Email</label>
+                <label htmlFor="contact-email">Email</label>
+
                 <input
+                  id="contact-email"
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your email address"
+                  required
                 />
               </div>
 
+              {/* Message */}
               <div className="contact-field">
-                <label>Message</label>
+                <label htmlFor="contact-message">Message</label>
+
                 <textarea
+                  id="contact-message"
                   rows="5"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="How can we help?"
+                  required
                 />
               </div>
 
-              <button type="submit" className="contact-submit">
-                Send Message
-                <ArrowRight size={18} />
+              {/* Success Message */}
+              {successMessage && (
+                <p className="contact-success">
+                  {successMessage}
+                </p>
+              )}
+
+              {/* Error Message */}
+              {errorMessage && (
+                <p className="contact-error">
+                  {errorMessage}
+                </p>
+              )}
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="contact-submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+
+                {!isSubmitting && (
+                  <ArrowRight size={18} />
+                )}
               </button>
+
             </form>
           </motion.div>
 

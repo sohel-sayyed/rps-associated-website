@@ -64,27 +64,19 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  justify-content: flex-start;
+  text-decoration: none;
   flex-shrink: 0;
+  width: 125px;
+  height: 60px;
 }
 
-.brand-mark {
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 13px;
-
-  background: #7c3aed;
-  color: white;
-
-  font-family: "Manrope", sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-
-  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.2);
+.brand-logo {
+  display: block;
+  width: 115px;
+  height: 58px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .brand-text {
@@ -817,6 +809,11 @@ a {
 
   .navbar {
     height: 70px;
+  }
+
+  .brand-mark {
+    width: 43px;
+    height: 43px;
   }
 
   .hero-section {
@@ -4966,6 +4963,17 @@ a {
   .not-found-secondary {
     width: 100%;
     max-width: 260px;
+  }
+
+
+  .brand-mark {
+    width: 43px;
+    height: 43px;
+  }
+
+  .brand-logo {
+    max-width: 43px;
+    max-height: 43px;
   }
 }
 

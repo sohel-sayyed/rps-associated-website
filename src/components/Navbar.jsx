@@ -31,9 +31,9 @@ export default function Navbar() {
 
   const navigate = useNavigate();
 
-  /*
-   * Firebase authentication state
-   */
+  /* =========================
+     FIREBASE AUTH
+  ========================== */
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -46,9 +46,9 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
-  /*
-   * Logout
-   */
+  /* =========================
+     LOGOUT
+  ========================== */
   const handleLogout = async () => {
     try {
       setLoggingOut(true);
@@ -78,19 +78,11 @@ export default function Navbar() {
           onClick={closeMenu}
           aria-label="RPS Associated Home"
         >
-          <div className="brand-mark">
-            R
-          </div>
-
-          <div className="brand-text">
-            <span className="brand-name">
-              RPS
-            </span>
-
-            <span className="brand-subtitle">
-              ASSOCIATIED
-            </span>
-          </div>
+          <img
+            src="/assets/rps-logo.png"
+            alt="RPS Associated"
+            className="brand-logo"
+          />
         </Link>
 
         {/* =========================
@@ -135,8 +127,11 @@ export default function Navbar() {
                 disabled={loggingOut}
               >
                 <LogOut size={16} />
+
                 <span>
-                  {loggingOut ? "Logging out..." : "Logout"}
+                  {loggingOut
+                    ? "Logging out..."
+                    : "Logout"}
                 </span>
               </button>
             </>
@@ -209,7 +204,7 @@ export default function Navbar() {
             }}
           >
 
-            {/* Main navigation */}
+            {/* Main Navigation */}
             {navItems.map((item) => (
               <NavLink
                 key={item.label}

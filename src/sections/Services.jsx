@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import {
   Shirt,
-  WashingMachine,
   Truck,
   Sparkles,
   CheckCircle2,
@@ -24,22 +23,10 @@ const services = [
     ],
   },
   {
-    icon: WashingMachine,
-    title: "Laundry Care",
-    description:
-      "Reliable washing and folding service that takes care of your clothes from start to finish.",
-    features: [
-      "Wash & Fold",
-      "Everyday Wear",
-      "Delicate Fabric Care",
-      "Clothing Care",
-    ],
-  },
-  {
     icon: Truck,
     title: "Pickup & Delivery",
     description:
-      "We collect your clothes and bring them back to your doorstep when they are ready.",
+      "We collect your clothes from your doorstep and bring them back once they are freshly pressed.",
     features: [
       "Doorstep Pickup",
       "Real-time Updates",
@@ -54,9 +41,9 @@ export default function Services() {
     <main className="services-section">
       <div className="services-container">
 
-        {/* =========================
-            PAGE INTRO
-        ========================== */}
+        {/* =====================================================
+            SECTION 1 — SERVICES
+        ===================================================== */}
 
         <motion.div
           className="services-heading"
@@ -70,21 +57,20 @@ export default function Services() {
           </div>
 
           <h2>
-            Care for every
-            <span> piece you wear.</span>
+            Professional ironing,
+            <span> made simple.</span>
           </h2>
 
           <p>
-            From perfectly pressed shirts to convenient doorstep
-            pickup, RPS Associatied makes clothing care simple,
-            convenient and reliable.
+            From everyday shirts to formal wear, RPS Associatied provides
+            professional ironing with convenient doorstep pickup and delivery.
           </p>
         </motion.div>
 
 
-        {/* =========================
+        {/* =====================================================
             SERVICE CARDS
-        ========================== */}
+        ===================================================== */}
 
         <div className="services-grid">
 
@@ -97,7 +83,7 @@ export default function Services() {
                 key={service.title}
                 initial={{
                   opacity: 0,
-                  y: 30,
+                  y: 25,
                 }}
                 animate={{
                   opacity: 1,
@@ -121,24 +107,30 @@ export default function Services() {
 
                 {/* Title */}
 
-                <h3>{service.title}</h3>
+                <h3>
+                  {service.title}
+                </h3>
 
 
-                {/* Small divider */}
+                {/* Divider */}
 
-                <div className="service-card-divider"></div>
+                <div className="service-card-divider" />
 
 
                 {/* Description */}
 
-                <p>{service.description}</p>
+                <p>
+                  {service.description}
+                </p>
 
 
                 {/* Includes */}
 
                 <div className="service-includes">
 
-                  <strong>Includes</strong>
+                  <strong>
+                    Includes
+                  </strong>
 
                   <div className="service-includes-list">
 
@@ -148,7 +140,10 @@ export default function Services() {
                         key={feature}
                       >
                         <CheckCircle2 size={16} />
-                        <span>{feature}</span>
+
+                        <span>
+                          {feature}
+                        </span>
                       </div>
                     ))}
 
@@ -163,15 +158,15 @@ export default function Services() {
         </div>
 
 
-        {/* =========================
-            PLACE ORDER CTA
-        ========================== */}
+        {/* =====================================================
+            SECTION 2 — ORDER CTA
+        ===================================================== */}
 
         <motion.div
           className="services-order-cta"
           initial={{
             opacity: 0,
-            y: 30,
+            y: 25,
           }}
           animate={{
             opacity: 1,
@@ -183,28 +178,40 @@ export default function Services() {
           }}
         >
 
+          {/* CTA Icon */}
+
           <div className="services-order-icon">
             <Shirt size={30} />
           </div>
 
+
+          {/* CTA Content */}
+
           <div className="services-order-content">
 
             <h3>
-              Ready to get your clothes cared for?
+              Ready for perfectly pressed clothes?
             </h3>
 
             <p>
-              Book our services in just a few simple steps.
+              Place your ironing order and let RPS take care of the rest.
             </p>
 
           </div>
 
 
+          {/* =================================================
+              PLACE ORDER → OUR APP
+          ================================================= */}
+
           <Link
-            to="/book-service"
+            to="/our-app"
             className="services-order-button"
           >
-            <span>Place Order</span>
+            <span>
+              Place Order
+            </span>
+
             <ArrowRight size={19} />
           </Link>
 

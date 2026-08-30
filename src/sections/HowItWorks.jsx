@@ -15,9 +15,9 @@ const steps = [
     number: "01",
     icon: CalendarCheck,
     title: "Book a Service",
-    text: "Choose ironing or laundry service and place your order through the RPS app.",
+    text: "Choose your ironing service and place your order through the RPS app.",
     details: [
-      "Choose your preferred service",
+      "Choose your preferred ironing service",
       "Select the clothes you want to send",
       "Place your order in a few simple steps",
     ],
@@ -36,11 +36,11 @@ const steps = [
   {
     number: "03",
     icon: Sparkles,
-    title: "Professional Care",
-    text: "Your clothes are carefully handled and professionally pressed or cleaned.",
+    title: "Professional Ironing",
+    text: "Your clothes are carefully handled and professionally pressed for a crisp, fresh finish.",
     details: [
       "Clothes are handled with care",
-      "Professional ironing and laundry",
+      "Professional ironing",
       "Quality-focused clothing care",
     ],
   },
@@ -48,7 +48,7 @@ const steps = [
     number: "04",
     icon: PackageCheck,
     title: "Ready for Delivery",
-    text: "Once your clothes are ready, we deliver them back to your doorstep.",
+    text: "Once your clothes are professionally pressed, we deliver them back to your doorstep.",
     details: [
       "Receive order status updates",
       "Clothes are prepared for delivery",
@@ -84,7 +84,7 @@ export default function HowItWorks() {
 
           <p>
             From booking to doorstep delivery, RPS Associatied makes
-            professional clothing care simple and convenient.
+            professional ironing simple and convenient.
           </p>
         </motion.div>
 
@@ -197,13 +197,13 @@ export default function HowItWorks() {
               <span>READY WHEN YOU ARE</span>
 
               <h3>
-                Book your clothing care
+                Book your ironing service
                 <strong> in a few taps.</strong>
               </h3>
 
               <p>
-                Use the RPS app to book services, manage orders and
-                stay updated from pickup to delivery.
+                Use the RPS app to book ironing services, manage orders
+                and stay updated from pickup to delivery.
               </p>
             </div>
 

@@ -1,160 +1,248 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
   Download,
-  ArrowUpRight,
+  ArrowRight,
 } from "lucide-react";
 
-const navItems = [
-  { label: "Home", to: "/" },
-  { label: "Services", to: "/services" },
-  { label: "How It Works", to: "/how-it-works" },
-  { label: "Our App", to: "/app" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
+// =========================================================
+// NAVIGATION LINKS
+// =========================================================
+
+const navigationLinks = [
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Services",
+    path: "/services",
+  },
+  {
+    label: "How It Works",
+    path: "/how-it-works",
+  },
+  {
+    label: "Our App",
+    path: "/our-app",
+  },
+  {
+    label: "About",
+    path: "/about",
+  },
+  {
+    label: "Contact",
+    path: "/contact",
+  },
 ];
 
-export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+// =========================================================
+// NAVBAR
+// =========================================================
 
-  const closeMenu = () => {
-    setMenuOpen(false);
+export default function Navbar() {
+
+  const [
+    isMobileMenuOpen,
+    setIsMobileMenuOpen,
+  ] = useState(false);
+
+
+  // =======================================================
+  // CURRENT PATH
+  // =======================================================
+
+  const currentPath =
+    window.location.pathname;
+
+
+  // =======================================================
+  // CHECK ACTIVE PAGE
+  // =======================================================
+
+  const isActive = (path) => {
+
+    if (path === "/") {
+      return currentPath === "/";
+    }
+
+    return currentPath === path;
   };
+
+
+  // =======================================================
+  // MOBILE MENU
+  // =======================================================
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
 
   return (
     <header className="site-header">
+
+      {/* ===================================================
+          NAVBAR
+      =================================================== */}
+
       <div className="navbar">
 
-        {/* =========================
-            LOGO
-        ========================== */}
-        <Link
-          to="/"
+
+        {/* =================================================
+            BRAND / LOGO
+        ================================================= */}
+
+        <a
+          href="/"
           className="brand"
-          onClick={closeMenu}
           aria-label="RPS Associated Home"
         >
+
           <img
             src="/assets/rps-logo.png"
             alt="RPS Associated"
             className="brand-logo"
           />
-        </Link>
 
-        {/* =========================
+        </a>
+
+
+        {/* =================================================
             DESKTOP NAVIGATION
-        ========================== */}
-        <nav className="desktop-nav">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.label}
-              to={item.to}
-              end={item.to === "/"}
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
+        ================================================= */}
+
+        <nav
+          className="desktop-nav"
+          aria-label="Main navigation"
+        >
+
+          {navigationLinks.map((link) => (
+
+            <a
+              key={link.path}
+              href={link.path}
+              className={
+                isActive(link.path)
+                  ? "nav-link active"
+                  : "nav-link"
               }
             >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+              {link.label}
+            </a>
 
-        {/* =========================
-            DESKTOP CTA
-        ========================== */}
-        <div className="navbar-actions">
-          <Link
-            to="/app"
+          ))}
+
+
+          {/* ===============================================
+              GET THE APP
+          =============================================== */}
+
+          <a
+            href="/app"
             className="nav-download"
           >
-            <Download size={16} />
-            <span>Get the App</span>
-          </Link>
-        </div>
 
-        {/* =========================
+            <Download size={16} />
+
+            <span>
+              Get the App
+            </span>
+
+          </a>
+
+        </nav>
+
+
+        {/* =================================================
             MOBILE MENU BUTTON
-        ========================== */}
+        ================================================= */}
+
         <button
+          type="button"
           className="mobile-menu-button"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={
-            menuOpen
-              ? "Close navigation"
-              : "Open navigation"
+          onClick={() =>
+            setIsMobileMenuOpen(
+              (previous) => !previous
+            )
           }
-          aria-expanded={menuOpen}
+          aria-label={
+            isMobileMenuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
+          aria-expanded={isMobileMenuOpen}
         >
-          {menuOpen ? (
-            <X size={23} />
+
+          {isMobileMenuOpen ? (
+            <X size={21} />
           ) : (
-            <Menu size={23} />
+            <Menu size={21} />
           )}
+
         </button>
+
       </div>
 
-      {/* =========================
+
+      {/* ===================================================
           MOBILE NAVIGATION
-      ========================== */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="mobile-nav"
-            initial={{
-              opacity: 0,
-              height: 0,
-            }}
-            animate={{
-              opacity: 1,
-              height: "auto",
-            }}
-            exit={{
-              opacity: 0,
-              height: 0,
-            }}
-            transition={{
-              duration: 0.25,
-            }}
+      =================================================== */}
+
+      {isMobileMenuOpen && (
+
+        <nav
+          className="mobile-nav"
+          aria-label="Mobile navigation"
+        >
+
+          {navigationLinks.map((link) => (
+
+            <a
+              key={link.path}
+              href={link.path}
+              className={
+                isActive(link.path)
+                  ? "mobile-nav-link mobile-active"
+                  : "mobile-nav-link"
+              }
+              onClick={closeMobileMenu}
+            >
+
+              <span>
+                {link.label}
+              </span>
+
+              <ArrowRight size={16} />
+
+            </a>
+
+          ))}
+
+
+          {/* ===============================================
+              MOBILE GET THE APP
+          =============================================== */}
+
+          <a
+            href="/app"
+            className="mobile-download"
+            onClick={closeMobileMenu}
           >
 
-            {/* Main Navigation */}
-            {navItems.map((item) => (
-              <NavLink
-                key={item.label}
-                to={item.to}
-                end={item.to === "/"}
-                onClick={closeMenu}
-                className={({ isActive }) =>
-                  `mobile-nav-link ${
-                    isActive
-                      ? "mobile-active"
-                      : ""
-                  }`
-                }
-              >
-                <span>{item.label}</span>
-                <ArrowUpRight size={17} />
-              </NavLink>
-            ))}
+            <Download size={17} />
 
-            {/* =========================
-                MOBILE APP CTA
-            ========================== */}
-            <Link
-              to="/app"
-              onClick={closeMenu}
-              className="mobile-download"
-            >
-              <Download size={17} />
-              <span>Get the App</span>
-            </Link>
+            <span>
+              Get the App
+            </span>
 
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </a>
+
+        </nav>
+
+      )}
+
     </header>
   );
 }

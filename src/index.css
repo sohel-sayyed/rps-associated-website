@@ -5859,71 +5859,172 @@ a {
   }
 }
 /* =========================================================
-   RPS SERVICES - FINAL OVERRIDE
+   RPS SERVICES — CLEAN 2 SECTION LAYOUT
+   Only Professional Ironing + Pickup & Delivery
 ========================================================= */
 
-.services-section .service-card {
-  min-height: 490px !important;
-  padding: 28px !important;
-  background: #ffffff !important;
-  border: 1px solid #e6defb !important;
-  border-radius: 22px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  box-sizing: border-box !important;
+.services-section {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding: 105px 0 110px !important;
+  background: #faf9fd;
+  border-top: 1px solid #eeeaf5;
 }
 
+.services-container {
+  width: min(1080px, calc(100% - 48px)) !important;
+  margin: 0 auto !important;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.services-heading {
+  max-width: 700px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+.services-heading .section-label {
+  justify-content: center !important;
+}
+
+.services-heading h2 {
+  margin-top: 18px !important;
+  font-family: "Manrope", sans-serif !important;
+  font-size: clamp(40px, 5vw, 60px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -2.8px !important;
+  font-weight: 800 !important;
+  color: #111322 !important;
+}
+
+.services-heading h2 span {
+  color: #7c3aed !important;
+}
+
+.services-heading p {
+  max-width: 620px !important;
+  margin: 20px auto 0 !important;
+  color: #697386 !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+
+/* =========================================================
+   TWO SERVICE CARDS
+========================================================= */
+
+.services-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  margin-top: 52px !important;
+  align-items: stretch !important;
+}
+
+.services-section .service-card {
+  position: relative !important;
+
+  width: 100% !important;
+  min-height: 440px !important;
+
+  padding: 30px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  box-sizing: border-box !important;
+
+  border: 1px solid #e6defb !important;
+  border-radius: 24px !important;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 12px 35px rgba(33, 25, 50, 0.045) !important;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease !important;
+}
+
+.services-section .service-card:hover {
+  transform: translateY(-7px) !important;
+
+  border-color: #d5c1f7 !important;
+
+  box-shadow:
+    0 25px 55px rgba(55, 30, 100, 0.10) !important;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
 .services-section .service-card-icon {
-  width: 64px !important;
-  height: 64px !important;
-  min-width: 64px !important;
+  width: 66px !important;
+  height: 66px !important;
+  min-width: 66px !important;
 
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
 
-  border-radius: 50% !important;
+  margin-bottom: 28px !important;
+
+  border-radius: 18px !important;
 
   background: #f0e7ff !important;
   color: #7437f5 !important;
-
-  margin-bottom: 30px !important;
 }
 
-
-/* TITLE */
+/* =========================================================
+   TITLE
+========================================================= */
 
 .services-section .service-card h3 {
   margin: 0 !important;
+
+  font-family: "Manrope", sans-serif !important;
+
   color: #101321 !important;
+
   font-size: 25px !important;
   line-height: 1.25 !important;
+  letter-spacing: -0.8px !important;
+  font-weight: 800 !important;
 }
 
-
-/* DIVIDER */
+/* =========================================================
+   DIVIDER
+========================================================= */
 
 .services-section .service-card-divider {
-  width: 32px !important;
+  width: 34px !important;
   height: 2px !important;
 
-  margin: 20px 0 !important;
+  margin: 18px 0 !important;
 
   background: #7437f5 !important;
 }
 
-
-/* DESCRIPTION */
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .services-section .service-card > p {
   margin: 0 !important;
+
+  max-width: 500px !important;
 
   color: #667085 !important;
 
   font-size: 15px !important;
   line-height: 1.7 !important;
 }
-
 
 /* =========================================================
    INCLUDES
@@ -5937,29 +6038,30 @@ a {
 .services-section .service-includes strong {
   display: block !important;
 
-  margin-bottom: 17px !important;
+  margin-bottom: 15px !important;
 
   color: #7437f5 !important;
 
-  font-size: 14px !important;
-  font-weight: 700 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px !important;
 }
 
 .services-section .service-includes-list {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 13px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 11px 18px !important;
 }
 
 .services-section .service-feature {
   display: flex !important;
   align-items: center !important;
 
-  gap: 10px !important;
+  gap: 9px !important;
 
   color: #596579 !important;
 
-  font-size: 14px !important;
+  font-size: 13px !important;
   line-height: 1.4 !important;
 }
 
@@ -5974,34 +6076,34 @@ a {
   stroke-width: 2 !important;
 }
 
-
 /* =========================================================
-   BOTTOM ORDER CTA
+   PLACE ORDER CTA
 ========================================================= */
 
 .services-section .services-order-cta {
   position: relative !important;
 
   width: 100% !important;
-  min-height: 160px !important;
+  min-height: 155px !important;
 
-  margin-top: 45px !important;
-  padding: 30px !important;
-
-  box-sizing: border-box !important;
+  margin-top: 34px !important;
+  padding: 28px 32px !important;
 
   display: flex !important;
   align-items: center !important;
-  gap: 24px !important;
+
+  gap: 22px !important;
+
+  box-sizing: border-box !important;
 
   border: 1px solid #e5dafa !important;
   border-radius: 22px !important;
 
   background:
     radial-gradient(
-      circle at 85% 100%,
+      circle at 90% 15%,
       rgba(116, 55, 245, 0.12),
-      transparent 42%
+      transparent 38%
     ),
     linear-gradient(
       110deg,
@@ -6012,22 +6114,21 @@ a {
   overflow: hidden !important;
 
   box-shadow:
-    0 15px 40px rgba(65, 35, 130, 0.04) !important;
+    0 15px 40px rgba(65, 35, 130, 0.045) !important;
 }
 
-
-/* Decorative circles */
+/* Decorative circle */
 
 .services-section .services-order-cta::after {
   content: "" !important;
 
   position: absolute !important;
 
-  width: 430px !important;
-  height: 430px !important;
+  width: 380px !important;
+  height: 380px !important;
 
-  right: -120px !important;
-  bottom: -310px !important;
+  right: -140px !important;
+  bottom: -285px !important;
 
   border: 1px solid rgba(116, 55, 245, 0.12) !important;
 
@@ -6036,16 +6137,17 @@ a {
   pointer-events: none !important;
 }
 
-
-/* CTA ICON */
+/* =========================================================
+   CTA ICON
+========================================================= */
 
 .services-section .services-order-icon {
   position: relative !important;
   z-index: 2 !important;
 
-  width: 64px !important;
-  height: 64px !important;
-  min-width: 64px !important;
+  width: 62px !important;
+  height: 62px !important;
+  min-width: 62px !important;
 
   display: flex !important;
   align-items: center !important;
@@ -6057,23 +6159,26 @@ a {
   color: #7437f5 !important;
 }
 
-
-/* CTA CONTENT */
+/* =========================================================
+   CTA CONTENT
+========================================================= */
 
 .services-section .services-order-content {
   position: relative !important;
   z-index: 2 !important;
 
   flex: 1 !important;
+  min-width: 0 !important;
 }
 
 .services-section .services-order-content h3 {
-  margin: 0 0 8px !important;
+  margin: 0 0 7px !important;
 
   color: #101321 !important;
 
-  font-size: 25px !important;
+  font-size: 23px !important;
   line-height: 1.3 !important;
+  letter-spacing: -.5px !important;
 }
 
 .services-section .services-order-content p {
@@ -6081,90 +6186,140 @@ a {
 
   color: #667085 !important;
 
-  font-size: 15px !important;
-  line-height: 1.5 !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
 }
 
-
 /* =========================================================
-   PLACE ORDER BUTTON
+   BUTTON
 ========================================================= */
 
 .services-section .services-order-button {
   position: relative !important;
   z-index: 5 !important;
 
-  min-width: 220px !important;
-  min-height: 58px !important;
+  min-width: 205px !important;
+  min-height: 55px !important;
 
-  padding: 0 25px !important;
+  padding: 0 22px !important;
 
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
 
-  gap: 15px !important;
+  gap: 12px !important;
 
   box-sizing: border-box !important;
 
   border: none !important;
   border-radius: 12px !important;
 
-  background: linear-gradient(
-    135deg,
-    #7b35f5,
-    #6325e8
-  ) !important;
+  background:
+    linear-gradient(
+      135deg,
+      #7b35f5,
+      #6325e8
+    ) !important;
 
   color: #ffffff !important;
 
   text-decoration: none !important;
 
-  font-size: 15px !important;
-  font-weight: 600 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
 
   box-shadow:
-    0 12px 30px rgba(116, 55, 245, 0.25) !important;
+    0 12px 30px rgba(116, 55, 245, 0.23) !important;
 
   cursor: pointer !important;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease !important;
+    transform .2s ease,
+    box-shadow .2s ease !important;
 }
 
 .services-section .services-order-button:hover {
   transform: translateY(-2px) !important;
 
   box-shadow:
-    0 16px 35px rgba(116, 55, 245, 0.35) !important;
+    0 16px 35px rgba(116, 55, 245, 0.34) !important;
 }
 
 .services-section .services-order-button svg {
   color: #ffffff !important;
 }
 
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .services-section {
+    padding-top: 85px !important;
+    padding-bottom: 90px !important;
+  }
+
+  .services-grid {
+    gap: 18px !important;
+  }
+
+  .services-section .service-card {
+    min-height: 430px !important;
+    padding: 26px !important;
+  }
+
+  .services-section .services-order-cta {
+    padding: 26px !important;
+  }
+}
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 650px) {
 
-  .services-section .services-grid {
+  .services-section {
+    padding-top: 72px !important;
+    padding-bottom: 75px !important;
+  }
+
+  .services-container {
+    width: calc(100% - 32px) !important;
+  }
+
+  .services-heading h2 {
+    font-size: 40px !important;
+    letter-spacing: -2px !important;
+  }
+
+  .services-heading p {
+    font-size: 14px !important;
+  }
+
+  .services-grid {
     grid-template-columns: 1fr !important;
+    margin-top: 38px !important;
   }
 
   .services-section .service-card {
     min-height: auto !important;
+    padding: 25px !important;
+  }
+
+  .services-section .service-includes-list {
+    grid-template-columns: 1fr !important;
   }
 
   .services-section .services-order-cta {
     flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    padding: 24px !important;
   }
 
   .services-section .services-order-content {
-    min-width: 200px !important;
+    flex: 1 1 calc(100% - 85px) !important;
   }
 
   .services-section .services-order-button {
@@ -6172,15 +6327,2242 @@ a {
   }
 }
 
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 420px) {
 
-  .services-section .services-order-cta {
-    padding: 24px !important;
-    align-items: flex-start !important;
+  .services-heading h2 {
+    font-size: 36px !important;
+  }
+
+  .services-section .service-card-icon {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px !important;
+  }
+
+  .services-section .service-card h3 {
+    font-size: 22px !important;
   }
 
   .services-section .services-order-content h3 {
-    font-size: 21px !important;
+    font-size: 20px !important;
   }
+}
+
+/* =========================================================
+   NEW HERO VISUAL
+   Glass Sphere → Explosion → Android + iPhone
+========================================================= */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(45px);
+}
+
+.hero-glow-one {
+  width: 360px;
+  height: 360px;
+  background: rgba(124, 58, 237, 0.10);
+  top: 90px;
+  left: 130px;
+}
+
+.hero-glow-two {
+  width: 220px;
+  height: 220px;
+  background: rgba(168, 85, 247, 0.08);
+  bottom: 40px;
+  right: 40px;
+}
+
+
+/* =========================================================
+   GLASS SPHERE
+========================================================= */
+
+.glass-sphere {
+  position: absolute;
+  z-index: 10;
+
+  width: 125px;
+  height: 125px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,0.95) 0%,
+      rgba(255,255,255,0.45) 18%,
+      rgba(220,210,255,0.25) 45%,
+      rgba(160,130,255,0.12) 70%,
+      rgba(255,255,255,0.05) 100%
+    );
+
+  border: 1px solid rgba(255,255,255,0.85);
+
+  box-shadow:
+    inset 0 0 25px rgba(255,255,255,0.75),
+    inset 0 0 55px rgba(130,80,255,0.15),
+    0 20px 60px rgba(90,50,180,0.18),
+    0 0 50px rgba(140,90,255,0.18);
+
+  backdrop-filter: blur(10px);
+
+  transform-style: preserve-3d;
+}
+
+.sphere-highlight {
+  position: absolute;
+
+  width: 42px;
+  height: 25px;
+
+  top: 18px;
+  left: 24px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.85);
+
+  filter: blur(7px);
+
+  transform: rotate(-25deg);
+}
+
+.sphere-inner {
+  position: absolute;
+
+  width: 78px;
+  height: 78px;
+
+  top: 23px;
+  left: 23px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.35);
+
+  box-shadow:
+    inset 0 0 25px rgba(255,255,255,0.35);
+}
+
+
+/* =========================================================
+   IMPACT FLASH
+========================================================= */
+
+.impact-flash {
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.9);
+
+  filter: blur(4px);
+
+  z-index: 8;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   EXPLOSION RINGS
+========================================================= */
+
+.blast-ring {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  border: 2px solid rgba(124,58,237,0.35);
+
+  z-index: 7;
+
+  pointer-events: none;
+}
+
+.blast-ring-two {
+  border-color: rgba(168,85,247,0.20);
+}
+
+
+/* =========================================================
+   GLASS PARTICLES
+========================================================= */
+
+.glass-particles {
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  left: 50%;
+  top: 50%;
+
+  z-index: 12;
+
+  pointer-events: none;
+}
+
+.glass-particle {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  border-radius: 2px;
+
+  background: rgba(255,255,255,0.85);
+
+  border: 1px solid rgba(130,90,240,0.25);
+
+  box-shadow:
+    0 0 12px rgba(130,90,240,0.35);
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   PHONES CONTAINER
+========================================================= */
+
+.hero-phones {
+  position: absolute;
+
+  width: 440px;
+  height: 500px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   PHONE BASE
+========================================================= */
+
+.hero-phone {
+  position: absolute;
+
+  width: 215px;
+  height: 430px;
+
+  border-radius: 38px;
+
+  padding: 8px;
+
+  background: #11101a;
+
+  box-shadow:
+    0 30px 60px rgba(20,15,40,0.20),
+    0 15px 30px rgba(90,50,180,0.12);
+
+  transform-style: preserve-3d;
+
+  overflow: hidden;
+}
+
+.phone-android {
+  left: 0;
+  top: 65px;
+
+  z-index: 4;
+}
+
+.phone-ios {
+  right: 0;
+  top: 25px;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   PHONE INNER FRAME
+========================================================= */
+
+.phone-frame {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 31px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(255,255,255,0.65);
+}
+
+
+/* =========================================================
+   PHONE TOP
+========================================================= */
+
+.phone-top-area {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 38px;
+
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dynamic-island {
+  width: 75px;
+  height: 21px;
+
+  margin-top: 9px;
+
+  border-radius: 20px;
+
+  background: #09090f;
+}
+
+.android-camera {
+  width: 9px;
+  height: 9px;
+
+  margin-top: 12px;
+
+  border-radius: 50%;
+
+  background: #08080d;
+
+  box-shadow:
+    0 0 0 3px rgba(0,0,0,0.08);
+}
+
+
+/* =========================================================
+   PHONE APP HEADER
+========================================================= */
+
+.phone-app-header {
+  position: relative;
+
+  height: 105px;
+
+  padding: 48px 18px 14px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #9333ea
+    );
+
+  color: white;
+}
+
+.phone-app-header small {
+  display: block;
+
+  font-size: 8px;
+
+  opacity: 0.75;
+
+  margin-bottom: 4px;
+}
+
+.phone-app-header strong {
+  display: block;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+.phone-avatar {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.18);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PHONE CONTENT
+========================================================= */
+
+.phone-content {
+  padding: 22px 17px 15px;
+}
+
+.phone-label {
+  display: block;
+
+  font-size: 7px;
+
+  letter-spacing: 1.2px;
+
+  color: #8b5cf6;
+
+  font-weight: 700;
+
+  margin-bottom: 7px;
+}
+
+.phone-content h3 {
+  margin: 0;
+
+  font-size: 20px;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.8px;
+
+  color: #11111c;
+}
+
+.phone-content > p {
+  margin: 7px 0 17px;
+
+  font-size: 9px;
+
+  line-height: 1.5;
+
+  color: #777589;
+}
+
+
+/* =========================================================
+   SERVICE CARDS
+========================================================= */
+
+.phone-services {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.phone-service-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  border-radius: 13px;
+
+  border: 1px solid #ece9f5;
+
+  background: #ffffff;
+}
+
+.phone-service-card.active {
+  background: #faf8ff;
+
+  border-color: #d9c9ff;
+}
+
+.phone-service-icon {
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color: #7c3aed;
+
+  background: #f0eaff;
+}
+
+.phone-service-card strong {
+  display: block;
+
+  font-size: 10px;
+
+  color: #171625;
+}
+
+.phone-service-card span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 7px;
+
+  color: #898697;
+}
+
+
+/* =========================================================
+   PHONE CTA
+========================================================= */
+
+.phone-book-button {
+  margin-top: 15px;
+
+  height: 32px;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  background: #7c3aed;
+
+  color: white;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 7px 15px rgba(124,58,237,0.20);
+}
+
+
+/* =========================================================
+   PHONE BOTTOM NAV
+========================================================= */
+
+.phone-bottom-nav {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border-top: 1px solid #eeeeF5;
+
+  background: rgba(255,255,255,0.96);
+
+  font-size: 7px;
+
+  color: #9693a3;
+}
+
+.phone-bottom-nav span {
+  position: relative;
+}
+
+.phone-nav-active {
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PLATFORM BADGES
+========================================================= */
+
+.platform-badge {
+  position: absolute;
+
+  z-index: 15;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.86);
+
+  border: 1px solid rgba(255,255,255,0.9);
+
+  box-shadow:
+    0 12px 30px rgba(40,25,80,0.10);
+
+  backdrop-filter: blur(12px);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: #242133;
+}
+
+.platform-android-badge {
+  left: 35px;
+  bottom: 42px;
+}
+
+.platform-ios-badge {
+  right: 30px;
+  bottom: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-visual {
+    max-width: 500px;
+  }
+
+  .hero-phones {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    text-align: center;
+
+    margin: 0 auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-trust {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    height: 520px;
+
+    margin: 30px auto 0;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .hero-visual {
+    height: 440px;
+
+    transform: scale(0.82);
+    transform-origin: top center;
+
+    margin-bottom: -70px;
+  }
+
+  .hero-phones {
+    transform: translate(-50%, -50%) scale(0.78);
+  }
+
+}
+
+/* ============================================================
+   OUR APP PAGE — FINAL PROFESSIONAL LAYOUT
+   ============================================================ */
+
+.our-app-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 110px 0 90px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 12% 45%,
+      rgba(124, 58, 237, 0.09),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 65%,
+      rgba(124, 58, 237, 0.06),
+      transparent 30%
+    ),
+    #ffffff;
+}
+
+
+.our-app-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   PAGE HEADING
+   ============================================================ */
+
+.our-app-heading {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 55px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+
+.our-app-heading .section-label {
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+
+.our-app-heading h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -2.8px;
+  font-weight: 750;
+}
+
+
+.our-app-heading h2 span {
+  color: #7c3aed;
+}
+
+
+.our-app-heading p {
+  max-width: 650px;
+  margin: 22px auto 0;
+
+  font-size: 16px;
+  line-height: 1.7;
+  color: #64748b;
+}
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.our-app-content {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+
+/* ============================================================
+   PHONE AREA
+   ============================================================ */
+
+.app-phone-wrapper {
+  width: 100%;
+  min-height: 650px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
+  isolation: isolate;
+}
+
+
+/* ============================================================
+   PHONE GLOW
+   ============================================================ */
+
+.app-phone-glow {
+  position: absolute;
+
+  width: 650px;
+  height: 420px;
+
+  left: 50%;
+  top: 100px;
+
+  transform: translateX(-50%);
+
+  background: radial-gradient(
+    ellipse,
+    rgba(124, 58, 237, 0.14),
+    rgba(124, 58, 237, 0.05) 42%,
+    transparent 72%
+  );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* ============================================================
+   PHONE ROW
+   ============================================================ */
+
+.app-phones {
+  width: auto !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+
+  align-items: flex-start !important;
+  justify-content: center !important;
+
+  flex-wrap: nowrap !important;
+
+  gap: 70px !important;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================
+   INDIVIDUAL PHONE PLATFORM
+   ============================================================ */
+
+.app-phone-device {
+  position: relative;
+
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   PLATFORM BADGE
+   ============================================================ */
+
+.app-platform-badge {
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 15px;
+
+  margin-bottom: 14px;
+
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #6d28d9;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  box-shadow:
+    0 6px 20px rgba(30, 20, 60, 0.07),
+    0 1px 3px rgba(30, 20, 60, 0.05);
+}
+
+
+.app-platform-badge svg {
+  color: #7c3aed;
+}
+
+
+/* ============================================================
+   PHONE BODY
+   ============================================================ */
+
+.app-phone {
+  width: 300px;
+  height: 620px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 6px solid #171827;
+  border-radius: 38px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 28px 55px rgba(25, 20, 50, 0.18),
+    0 10px 22px rgba(25, 20, 50, 0.10);
+
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   ANDROID / IOS VISUAL DIFFERENCE
+   ============================================================ */
+
+.android-phone .app-phone {
+  border-radius: 32px;
+}
+
+
+.ios-phone .app-phone {
+  border-radius: 38px;
+}
+
+
+/* ============================================================
+   STATUS BAR
+   ============================================================ */
+
+.phone-status-bar {
+  height: 30px;
+
+  padding: 7px 13px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  color: #171827;
+
+  position: relative;
+  z-index: 3;
+}
+
+
+/* ============================================================
+   PHONE HEADER
+   ============================================================ */
+
+.app-phone-header {
+  height: 105px;
+
+  padding: 20px 18px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  background: linear-gradient(
+    135deg,
+    #8739ed 0%,
+    #7527e8 100%
+  );
+
+  color: #ffffff;
+}
+
+
+.phone-welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+
+.phone-welcome span {
+  font-size: 9px;
+  opacity: 0.72;
+}
+
+
+.phone-welcome strong {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+
+.app-phone-avatar {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   PHONE BODY
+   ============================================================ */
+
+.app-phone-body {
+  padding: 18px 14px 12px;
+}
+
+
+.app-small-text {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 8px;
+  color: #8a8da0;
+}
+
+
+.app-phone-body h3 {
+  margin: 0 0 13px;
+
+  font-size: 18px;
+  line-height: 1.15;
+
+  color: #171827;
+}
+
+
+/* ============================================================
+   SERVICE GRID
+   ============================================================ */
+
+.app-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+
+.app-service-card {
+  min-height: 92px;
+
+  padding: 12px 10px;
+
+  border: 1px solid #e8e5f1;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.app-service-card-active {
+  border-color: rgba(124, 58, 237, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #faf7ff
+    );
+}
+
+
+.app-service-icon {
+  width: 28px;
+  height: 28px;
+
+  margin-bottom: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #f0e8ff;
+  color: #7c3aed;
+}
+
+
+.app-service-card strong {
+  margin-bottom: 3px;
+
+  font-size: 10px;
+  color: #171827;
+}
+
+
+.app-service-card span {
+  font-size: 7px;
+  line-height: 1.3;
+  color: #8a8da0;
+}
+
+
+/* ============================================================
+   CURRENT ORDER
+   ============================================================ */
+
+.phone-order-card {
+  padding: 10px 10px 8px;
+}
+
+
+.phone-order-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+
+.phone-order-top > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.phone-order-top span {
+  font-size: 7px;
+  color: #8a8da0;
+}
+
+
+.phone-order-top strong {
+  font-size: 9px;
+  color: #171827;
+}
+
+
+.phone-order-check {
+  color: #7c3aed;
+}
+
+
+.phone-order-card h4 {
+  margin: 7px 0 2px;
+
+  font-size: 14px;
+  color: #171827;
+}
+
+
+.phone-order-card > span {
+  font-size: 8px;
+  color: #6b6e80;
+}
+
+
+/* ============================================================
+   ORDER PROGRESS
+   ============================================================ */
+
+.phone-progress {
+  margin-top: 12px;
+}
+
+
+.phone-progress-line {
+  height: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ddd6fe;
+}
+
+
+.phone-progress-line span {
+  width: 12px;
+  height: 12px;
+
+  border: 2px solid #7c3aed;
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+
+.phone-progress-labels {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 5px;
+}
+
+
+.phone-progress-labels small {
+  font-size: 6px;
+  color: #8a8da0;
+}
+
+
+/* ============================================================
+   ORDER STATUS
+   ============================================================ */
+
+.app-order-card {
+  min-height: 54px;
+
+  margin: 3px 10px 0;
+
+  padding: 9px 10px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  border: 1px solid #eceaf3;
+  border-radius: 11px;
+
+  background: #faf9fd;
+}
+
+
+.app-order-icon {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #f0e8ff;
+  color: #7c3aed;
+
+  flex-shrink: 0;
+}
+
+
+.app-order-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+
+.app-order-card span {
+  font-size: 7px;
+  color: #9294a4;
+}
+
+
+.app-order-card strong {
+  font-size: 8px;
+  color: #292a37;
+}
+
+
+/* ============================================================
+   PHONE BOTTOM NAV
+   ============================================================ */
+
+.phone-bottom-nav {
+  height: 43px;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid #eeeaf5;
+
+  background: rgba(255, 255, 255, 0.97);
+}
+
+
+.phone-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  font-size: 6px;
+  color: #9b9dac;
+}
+
+
+.phone-nav-item.active {
+  color: #7c3aed;
+}
+
+
+/* ============================================================
+   FLOATING LOCATION BADGE
+   ============================================================ */
+
+.app-floating-badge {
+  position: absolute;
+
+  left: calc(50% + 285px);
+  bottom: 35px;
+
+  min-width: 175px;
+
+  padding: 12px 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 15px 35px rgba(30, 20, 60, 0.12);
+
+  z-index: 5;
+}
+
+
+.app-floating-badge svg {
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+
+.app-floating-badge div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+
+.app-floating-badge span {
+  font-size: 8px;
+  color: #9294a4;
+}
+
+
+.app-floating-badge strong {
+  font-size: 10px;
+  color: #242532;
+}
+
+
+/* ============================================================
+   FEATURES SECTION
+   ============================================================ */
+
+.our-app-features {
+  width: 100% !important;
+  max-width: 900px !important;
+
+  margin: 15px auto 0 !important;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   FEATURE HEADING
+   ============================================================ */
+
+.app-feature-heading {
+  margin-bottom: 25px;
+}
+
+
+.app-feature-heading .section-label {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+
+.app-feature-heading h2 {
+  margin: 0;
+
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -1.4px;
+}
+
+
+.app-feature-heading h2 span {
+  color: #7c3aed;
+}
+
+
+/* ============================================================
+   FEATURE CARDS
+   ============================================================ */
+
+.app-feature-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+
+  width: 100%;
+}
+
+
+.app-feature {
+  min-height: 92px;
+
+  padding: 17px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 13px;
+
+  text-align: left;
+
+  border: 1px solid #e9e5f2;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 8px 25px rgba(30, 20, 60, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.app-feature:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 35px rgba(30, 20, 60, 0.08);
+}
+
+
+.app-feature-icon {
+  width: 39px;
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #f0e8ff;
+  color: #7c3aed;
+
+  flex-shrink: 0;
+}
+
+
+.app-feature-content h3 {
+  margin: 1px 0 5px;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  color: #171827;
+}
+
+
+.app-feature-content p {
+  margin: 0;
+
+  font-size: 10px;
+  line-height: 1.5;
+
+  color: #777b8f;
+}
+
+
+/* ============================================================
+   BENEFITS
+   ============================================================ */
+
+.app-benefits {
+  width: 100%;
+
+  margin-top: 18px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+
+.app-benefits > div {
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: 10px;
+
+  background: #faf7ff;
+
+  color: #343344;
+
+  font-size: 10px;
+  font-weight: 550;
+}
+
+
+.app-benefits svg {
+  color: #7c3aed;
+}
+
+
+/* ============================================================
+   DOWNLOAD BUTTONS
+   ============================================================ */
+
+.app-download-buttons {
+  display: flex;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 22px;
+}
+
+
+.app-download-button {
+  min-width: 265px;
+  height: 48px;
+
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #6d28d9
+  );
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 650;
+
+  box-shadow:
+    0 10px 22px rgba(124, 58, 237, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.app-download-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 28px rgba(124, 58, 237, 0.27);
+}
+
+
+.app-download-button svg:last-child {
+  margin-left: auto;
+}
+
+
+.app-coming-soon {
+  margin: 11px 0 0;
+
+  text-align: center;
+
+  font-size: 9px;
+  line-height: 1.5;
+
+  color: #9294a4;
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .our-app-section {
+    padding: 90px 0 70px;
+  }
+
+
+  .our-app-container {
+    width: min(100% - 32px, 700px);
+  }
+
+
+  .our-app-heading {
+    margin-bottom: 45px;
+  }
+
+
+  .app-phones {
+    gap: 35px !important;
+  }
+
+
+  .app-phone-device {
+    width: 270px;
+  }
+
+
+  .app-phone {
+    width: 270px;
+    height: 560px;
+  }
+
+
+  .app-floating-badge {
+    display: none;
+  }
+
+
+  .app-feature-list {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+
+@media (max-width: 620px) {
+
+  .our-app-section {
+    padding: 85px 0 55px;
+  }
+
+
+  .our-app-container {
+    width: calc(100% - 28px);
+  }
+
+
+  .our-app-heading {
+    margin-bottom: 35px;
+  }
+
+
+  .our-app-heading h2 {
+    font-size: 38px;
+    letter-spacing: -1.8px;
+  }
+
+
+  .our-app-heading p {
+    font-size: 14px;
+  }
+
+
+  .app-phone-wrapper {
+    min-height: auto;
+  }
+
+
+  .app-phones {
+    width: 100% !important;
+
+    gap: 14px !important;
+
+    align-items: flex-start !important;
+  }
+
+
+  .app-phone-device {
+    width: calc((100vw - 42px) / 2);
+  }
+
+
+  .app-phone {
+    width: 100%;
+    height: 510px;
+
+    border-width: 5px;
+    border-radius: 28px;
+  }
+
+
+  .ios-phone .app-phone {
+    border-radius: 30px;
+  }
+
+
+  .app-platform-badge {
+    height: 29px;
+
+    padding: 0 10px;
+
+    margin-bottom: 9px;
+
+    font-size: 10px;
+  }
+
+
+  .app-phone-header {
+    height: 88px;
+    padding: 15px 11px;
+  }
+
+
+  .phone-welcome span {
+    font-size: 7px;
+  }
+
+
+  .phone-welcome strong {
+    font-size: 11px;
+  }
+
+
+  .app-phone-avatar {
+    width: 25px;
+    height: 25px;
+
+    font-size: 9px;
+  }
+
+
+  .app-phone-body {
+    padding: 12px 8px 8px;
+  }
+
+
+  .app-small-text {
+    font-size: 6px;
+  }
+
+
+  .app-phone-body h3 {
+    font-size: 14px;
+    margin-bottom: 9px;
+  }
+
+
+  .app-service-grid {
+    gap: 5px;
+  }
+
+
+  .app-service-card {
+    min-height: 78px;
+    padding: 8px 7px;
+  }
+
+
+  .app-service-icon {
+    width: 23px;
+    height: 23px;
+    margin-bottom: 6px;
+  }
+
+
+  .app-service-card strong {
+    font-size: 8px;
+  }
+
+
+  .app-service-card span {
+    font-size: 5px;
+  }
+
+
+  .phone-order-card {
+    padding: 7px;
+  }
+
+
+  .phone-order-card h4 {
+    font-size: 11px;
+  }
+
+
+  .app-order-card {
+    margin: 2px 5px 0;
+    padding: 6px;
+  }
+
+
+  .app-order-icon {
+    width: 23px;
+    height: 23px;
+  }
+
+
+  .phone-bottom-nav {
+    height: 36px;
+  }
+
+
+  .our-app-features {
+    margin-top: 35px !important;
+  }
+
+
+  .app-feature-heading h2 {
+    font-size: 28px;
+  }
+
+
+  .app-benefits {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+
+  .app-download-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+
+  .app-download-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+}
+
+/* ============================================================
+   PREMIUM PHONE NOTCHES
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   PHONE POSITIONING
+   ------------------------------------------------------------ */
+
+.app-phone {
+  position: relative;
+}
+
+
+/* ------------------------------------------------------------
+   iOS — DYNAMIC ISLAND
+   ------------------------------------------------------------ */
+
+.ios-phone .ios-dynamic-island {
+  position: absolute;
+
+  top: 7px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 92px;
+  height: 24px;
+
+  border-radius: 999px;
+
+  background: #090a10;
+
+  z-index: 20;
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+
+/* tiny camera / sensor detail */
+
+.ios-phone .ios-island-camera {
+  position: absolute;
+
+  right: 13px;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background: #11131b;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 3px rgba(100, 80, 180, 0.25);
+}
+
+
+/* ------------------------------------------------------------
+   iOS STATUS BAR
+   ------------------------------------------------------------ */
+
+.ios-phone .phone-status-bar {
+  height: 34px;
+
+  padding-top: 9px;
+
+  position: relative;
+  z-index: 10;
+}
+
+
+/* ------------------------------------------------------------
+   ANDROID — CENTER PUNCH HOLE
+   ------------------------------------------------------------ */
+
+.android-phone .android-punch-hole {
+  position: absolute;
+
+  top: 8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  background: #080910;
+
+  z-index: 20;
+
+  box-shadow:
+    0 0 0 2px #171827,
+    inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+
+/* ------------------------------------------------------------
+   ANDROID STATUS BAR
+   ------------------------------------------------------------ */
+
+.android-phone .phone-status-bar {
+  height: 30px;
+
+  padding-top: 7px;
+
+  position: relative;
+  z-index: 10;
+}
+
+
+/* ------------------------------------------------------------
+   PHONE SCREEN TOP POLISH
+   ------------------------------------------------------------ */
+
+.ios-phone .app-phone-header,
+.android-phone .app-phone-header {
+  position: relative;
+}
+
+
+/* ------------------------------------------------------------
+   MOBILE NOTCH SCALING
+   ------------------------------------------------------------ */
+
+@media (max-width: 620px) {
+
+  .ios-phone .ios-dynamic-island {
+    top: 6px;
+
+    width: 68px;
+    height: 18px;
+  }
+
+
+  .ios-phone .ios-island-camera {
+    right: 9px;
+
+    width: 5px;
+    height: 5px;
+  }
+
+
+  .android-phone .android-punch-hole {
+    top: 6px;
+
+    width: 9px;
+    height: 9px;
+  }
+
+}
+
+/* ============================================================
+   OUR APP — MADE FOR CONVENIENCE SIZE FIX
+   ============================================================ */
+
+.our-app-features {
+  width: 100% !important;
+  max-width: 1100px !important;
+  margin: 35px auto 0 !important;
+}
+
+
+/* Heading */
+
+.app-feature-heading {
+  margin-bottom: 32px;
+}
+
+
+.app-feature-heading .section-label {
+  margin-bottom: 14px;
+}
+
+
+.app-feature-heading h2 {
+  font-size: clamp(34px, 3.5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+
+/* Feature cards */
+
+.app-feature-list {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+.app-feature {
+  min-height: 110px;
+
+  padding: 22px;
+
+  gap: 16px;
+
+  border-radius: 17px;
+}
+
+
+.app-feature-icon {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 12px;
+}
+
+
+.app-feature-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+.app-feature-content h3 {
+  margin: 2px 0 7px;
+
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+
+.app-feature-content p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+
+/* Benefits */
+
+.app-benefits {
+  margin-top: 20px;
+
+  gap: 20px;
+}
+
+
+.app-benefits > div {
+  min-height: 48px;
+
+  font-size: 12px;
+
+  border-radius: 11px;
+}
+
+
+/* Download buttons */
+
+.app-download-buttons {
+  margin-top: 25px;
+
+  gap: 14px;
+}
+
+
+.app-download-button {
+  min-width: 285px;
+  height: 52px;
+
+  font-size: 12px;
+
+  border-radius: 12px;
+}
+
+
+/* Description below buttons */
+
+.app-coming-soon {
+  margin-top: 13px;
+
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .our-app-features {
+    max-width: 700px !important;
+  }
+
+
+  .app-feature-list {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 620px) {
+
+  .our-app-features {
+    margin-top: 35px !important;
+  }
+
+
+  .app-feature-heading h2 {
+    font-size: 30px;
+  }
+
+
+  .app-feature {
+    min-height: 95px;
+    padding: 17px;
+  }
+
+
+  .app-feature-content h3 {
+    font-size: 14px;
+  }
+
+
+  .app-feature-content p {
+    font-size: 11px;
+  }
+
 }

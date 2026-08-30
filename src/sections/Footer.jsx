@@ -2,21 +2,22 @@ import { motion } from "framer-motion";
 import {
   Sparkles,
   Shirt,
-  WashingMachine,
   Truck,
   ArrowUpRight,
   Phone,
   Mail,
   MapPin,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
 
-        {/* Top Footer */}
+        {/* =================================================
+            TOP FOOTER
+        ================================================== */}
+
         <motion.div
           className="footer-top"
           initial={{ opacity: 0, y: 25 }}
@@ -25,27 +26,34 @@ export default function Footer() {
           transition={{ duration: 0.7 }}
         >
 
-          {/* Brand */}
+          {/* =================================================
+              BRAND
+          ================================================== */}
+
           <div className="footer-brand">
-            <Link
-              to="/"
+
+            <a
+              href="/"
               className="footer-logo"
               aria-label="Go to home"
             >
-              <span className="footer-logo-box">R</span>
+              <span className="footer-logo-box">
+                R
+              </span>
 
               <span className="footer-logo-text">
                 <strong>RPS</strong>
                 <small>ASSOCIATED</small>
               </span>
-            </Link>
+            </a>
 
             <p>
-              Professional ironing, laundry and doorstep clothing care
+              Professional ironing and doorstep clothing care
               made simple.
             </p>
 
             <div className="footer-contact-mini">
+
               <a href="tel:+910000000000">
                 <Phone size={15} />
                 <span>+91 XXXXX XXXXX</span>
@@ -60,109 +68,145 @@ export default function Footer() {
                 <MapPin size={15} />
                 <span>Your Local Area</span>
               </div>
+
             </div>
+
           </div>
 
-          {/* Quick Links */}
-          <div className="footer-column">
-            <h3>Quick Links</h3>
 
-            <Link to="/">
+          {/* =================================================
+              QUICK LINKS
+          ================================================== */}
+
+          <div className="footer-column">
+
+            <h3>
+              Quick Links
+            </h3>
+
+            <a href="/">
               Home
-            </Link>
+            </a>
 
-            <Link to="/services">
+            <a href="/services">
               Services
-            </Link>
+            </a>
 
-            <Link to="/how-it-works">
+            <a href="/how-it-works">
               How It Works
-            </Link>
+            </a>
 
-            <Link to="/app">
+            <a href="/app">
               Our App
-            </Link>
+            </a>
 
-            <Link to="/about">
+            <a href="/about">
               About
-            </Link>
+            </a>
 
-            <Link to="/contact">
+            <a href="/contact">
               Contact
-            </Link>
+            </a>
+
           </div>
 
-          {/* Services */}
-          <div className="footer-column">
-            <h3>Our Services</h3>
 
-            <Link to="/services">
+          {/* =================================================
+              OUR SERVICES
+          ================================================== */}
+
+          <div className="footer-column">
+
+            <h3>
+              Our Services
+            </h3>
+
+            <a href="/services">
               <Shirt size={15} />
               Professional Ironing
-            </Link>
+            </a>
 
-            <Link to="/services">
-              <WashingMachine size={15} />
-              Laundry Care
-            </Link>
-
-            <Link to="/services">
+            <a href="/services">
               <Truck size={15} />
               Pickup & Delivery
-            </Link>
+            </a>
+
           </div>
 
-          {/* CTA */}
+
+          {/* =================================================
+              CTA
+          ================================================== */}
+
           <div className="footer-cta">
+
             <div className="footer-cta-icon">
               <Sparkles size={20} />
             </div>
 
-            <h3>Fresh clothes.</h3>
-            <h3 className="purple-text">Zero hassle.</h3>
+            <h3>
+              Fresh clothes.
+            </h3>
+
+            <h3 className="purple-text">
+              Zero hassle.
+            </h3>
 
             <p>
-              Book professional clothing care and let us take care of
-              the rest.
+              Book professional ironing and let us take care
+              of the rest.
             </p>
 
-            <Link
-              to="/app"
+            <a
+              href="/app"
               className="footer-cta-button"
             >
               Get the RPS App
               <ArrowUpRight size={17} />
-            </Link>
+            </a>
+
           </div>
+
         </motion.div>
 
-        {/* Divider */}
+
+        {/* =================================================
+            DIVIDER
+        ================================================== */}
+
         <div className="footer-divider" />
 
-        {/* Bottom Footer */}
+
+        {/* =================================================
+            BOTTOM FOOTER
+        ================================================== */}
+
         <div className="footer-bottom">
 
           <p>
-            © 2026 <strong>RPS Associated</strong>. All rights reserved.
+            © 2026 <strong>RPS Associated</strong>.
+            All rights reserved.
           </p>
 
           <div className="footer-bottom-links">
-            <Link to="/privacy-policy">
-  Privacy Policy
-</Link>
 
-<Link to="/terms">
-  Terms & Conditions
-</Link>
+            <a href="/privacy-policy">
+              Privacy Policy
+            </a>
+
+            <a href="/terms">
+              Terms & Conditions
+            </a>
+
           </div>
 
-          <Link
-            to="/"
+          <a
+            href="/"
             className="back-to-top"
           >
             Back to home
             <ArrowUpRight size={15} />
-          </Link>
+          </a>
 
         </div>
 

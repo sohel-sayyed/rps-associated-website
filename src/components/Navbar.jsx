@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
   Download,
   ArrowUpRight,
-  LogIn,
-  UserPlus,
-  LayoutDashboard,
-  LogOut,
 } from "lucide-react";
-
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../config/firebase";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -26,43 +19,9 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  const [loggingOut, setLoggingOut] = useState(false);
-
-  const navigate = useNavigate();
-
-  /* =========================
-     FIREBASE AUTH
-  ========================== */
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const closeMenu = () => {
     setMenuOpen(false);
-  };
-
-  /* =========================
-     LOGOUT
-  ========================== */
-  const handleLogout = async () => {
-    try {
-      setLoggingOut(true);
-
-      await signOut(auth);
-
-      closeMenu();
-      navigate("/");
-    } catch (error) {
-      console.error("Logout error:", error);
-      alert("Unable to logout. Please try again.");
-    } finally {
-      setLoggingOut(false);
-    }
   };
 
   return (
@@ -104,59 +63,16 @@ export default function Navbar() {
         </nav>
 
         {/* =========================
-            DESKTOP AUTH / DASHBOARD
+            DESKTOP CTA
         ========================== */}
         <div className="navbar-actions">
-
-          {user ? (
-            <>
-              {/* Dashboard */}
-              <Link
-                to="/dashboard"
-                className="nav-download"
-              >
-                <LayoutDashboard size={16} />
-                <span>Dashboard</span>
-              </Link>
-
-              {/* Logout */}
-              <button
-                type="button"
-                className="nav-logout"
-                onClick={handleLogout}
-                disabled={loggingOut}
-              >
-                <LogOut size={16} />
-
-                <span>
-                  {loggingOut
-                    ? "Logging out..."
-                    : "Logout"}
-                </span>
-              </button>
-            </>
-          ) : (
-            <>
-              {/* Login */}
-              <Link
-                to="/login"
-                className="nav-login"
-              >
-                <LogIn size={16} />
-                <span>Login</span>
-              </Link>
-
-              {/* Create Account */}
-              <Link
-                to="/signup"
-                className="nav-download"
-              >
-                <UserPlus size={16} />
-                <span>Create Account</span>
-              </Link>
-            </>
-          )}
-
+          <Link
+            to="/app"
+            className="nav-download"
+          >
+            <Download size={16} />
+            <span>Get the App</span>
+          </Link>
         </div>
 
         {/* =========================
@@ -225,62 +141,8 @@ export default function Navbar() {
             ))}
 
             {/* =========================
-                MOBILE AUTH
+                MOBILE APP CTA
             ========================== */}
-
-            {user ? (
-              <>
-                {/* Dashboard */}
-                <Link
-                  to="/dashboard"
-                  onClick={closeMenu}
-                  className="mobile-download"
-                >
-                  <LayoutDashboard size={17} />
-                  <span>Dashboard</span>
-                </Link>
-
-                {/* Logout */}
-                <button
-                  type="button"
-                  onClick={handleLogout}
-                  disabled={loggingOut}
-                  className="mobile-logout"
-                >
-                  <LogOut size={17} />
-
-                  <span>
-                    {loggingOut
-                      ? "Logging out..."
-                      : "Logout"}
-                  </span>
-                </button>
-              </>
-            ) : (
-              <>
-                {/* Login */}
-                <Link
-                  to="/login"
-                  onClick={closeMenu}
-                  className="mobile-nav-link"
-                >
-                  <span>Login</span>
-                  <LogIn size={17} />
-                </Link>
-
-                {/* Signup */}
-                <Link
-                  to="/signup"
-                  onClick={closeMenu}
-                  className="mobile-download"
-                >
-                  <UserPlus size={17} />
-                  <span>Create Account</span>
-                </Link>
-              </>
-            )}
-
-            {/* Get App */}
             <Link
               to="/app"
               onClick={closeMenu}

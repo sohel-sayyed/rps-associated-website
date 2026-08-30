@@ -9,9 +9,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../config/firebase";
-
 const contactDetails = [
   {
     icon: Phone,
@@ -49,9 +46,7 @@ export default function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -61,43 +56,44 @@ export default function Contact() {
     }));
   };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     setIsSubmitting(true);
     setSuccessMessage("");
-    setErrorMessage("");
 
-    try {
-      await addDoc(collection(db, "contactMessages"), {
-        name: formData.name.trim(),
-        phone: formData.phone.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim(),
-        createdAt: serverTimestamp(),
-      });
+    const subject = encodeURIComponent(
+      `New Contact Request - ${formData.name}`
+    );
 
-      setSuccessMessage(
-        "Thank you! Your message has been sent successfully."
-      );
+    const body = encodeURIComponent(
+      `Hello RPS Associated,
 
-      // Clear form after successful submission
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        message: "",
-      });
-    } catch (error) {
-      console.error("Error submitting contact form:", error);
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
 
-      setErrorMessage(
-        "Something went wrong. Please try again later."
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+Message:
+${formData.message}
+
+Thank you.`
+    );
+
+    window.location.href =
+      `mailto:hello@rpsassociated.com?subject=${subject}&body=${body}`;
+
+    setSuccessMessage(
+      "Your email app has been opened with your message."
+    );
+
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+    });
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -124,8 +120,8 @@ export default function Contact() {
           </h2>
 
           <p>
-            Have a question, need help with an order, or want to book a
-            service? Get in touch with the RPS Associated team.
+            Have a question, need help, or want to know more about our
+            services? Get in touch with the RPS Associated team.
           </p>
         </motion.div>
 
@@ -180,7 +176,8 @@ export default function Contact() {
             <div className="contact-form-header">
               <h3>Send us a message</h3>
               <p>
-                Tell us how we can help and our team will get back to you.
+                Tell us how we can help and your email app will open
+                with the message ready to send.
               </p>
             </div>
 
@@ -193,7 +190,9 @@ export default function Contact() {
               <div className="contact-form-row">
 
                 <div className="contact-field">
-                  <label htmlFor="contact-name">Name</label>
+                  <label htmlFor="contact-name">
+                    Name
+                  </label>
 
                   <input
                     id="contact-name"
@@ -207,7 +206,9 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-field">
-                  <label htmlFor="contact-phone">Phone</label>
+                  <label htmlFor="contact-phone">
+                    Phone
+                  </label>
 
                   <input
                     id="contact-phone"
@@ -224,7 +225,9 @@ export default function Contact() {
 
               {/* Email */}
               <div className="contact-field">
-                <label htmlFor="contact-email">Email</label>
+                <label htmlFor="contact-email">
+                  Email
+                </label>
 
                 <input
                   id="contact-email"
@@ -239,7 +242,9 @@ export default function Contact() {
 
               {/* Message */}
               <div className="contact-field">
-                <label htmlFor="contact-message">Message</label>
+                <label htmlFor="contact-message">
+                  Message
+                </label>
 
                 <textarea
                   id="contact-message"
@@ -259,20 +264,15 @@ export default function Contact() {
                 </p>
               )}
 
-              {/* Error Message */}
-              {errorMessage && (
-                <p className="contact-error">
-                  {errorMessage}
-                </p>
-              )}
-
-              {/* Submit Button */}
+              {/* Submit */}
               <button
                 type="submit"
                 className="contact-submit"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting
+                  ? "Opening..."
+                  : "Send Message"}
 
                 {!isSubmitting && (
                   <ArrowRight size={18} />

@@ -36,7 +36,6 @@ export default function Hero() {
           }}
         >
           <div className="hero-eyebrow">
-            <Sparkles size={15} />
             <span>Professional clothing care</span>
           </div>
 

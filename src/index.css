@@ -1,9 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
 
 :root {
+  --rps-brown-900: #2B1D16;
+  --rps-brown-800: #3A271D;
+  --rps-brown-700: #51372A;
+
+  --rps-bronze: #9A7044;
+  --rps-gold: #B58A55;
+
+  --rps-cream: #F7F3ED;
+  --rps-cream-dark: #EEE7DC;
+  --rps-white: #FFFFFF;
+
+  --rps-text: #2B2723;
+  --rps-text-soft: #6F665D;
+  --rps-text-muted: #92887D;
+
+  --rps-border: #E4DDD3;
+  --rps-border-dark: #D5CABC;
+
+  --rps-success: #47745A;
+  --rps-success-bg: #EDF4EF;
+
+  --rps-shadow-sm: 0 4px 16px rgba(43, 29, 22, 0.05);
+  --rps-shadow-md: 0 12px 35px rgba(43, 29, 22, 0.08);
+  --rps-shadow-lg: 0 25px 60px rgba(43, 29, 22, 0.11);
+
   font-family: "DM Sans", sans-serif;
-  color: #111827;
-  background: #ffffff;
+  color: var(--rps-text);
+  background: var(--rps-white);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -21,11 +47,19 @@ html {
 body {
   min-width: 320px;
   min-height: 100vh;
-  background: #ffffff;
+
+  background: var(--rps-white);
+  color: var(--rps-text);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button,
-a {
+a,
+input,
+textarea,
+select {
   font: inherit;
 }
 
@@ -34,28 +68,47 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
 /* =========================
    NAVBAR
 ========================= */
+
+/* =========================================================
+   NAVBAR — PROFESSIONAL
+========================================================= */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
+
   width: 100%;
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid #eeeaf7;
-  backdrop-filter: blur(18px);
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-bottom: 1px solid var(--rps-border);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .navbar {
   width: min(1180px, calc(100% - 48px));
   height: 78px;
+
   margin: auto;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 30px;
 }
 
@@ -65,39 +118,23 @@ a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  text-decoration: none;
+
   flex-shrink: 0;
+
   width: 125px;
   height: 60px;
+
+  background: transparent;
 }
 
 .brand-logo {
   display: block;
+
   width: 115px;
   height: 58px;
+
   object-fit: contain;
   object-position: center;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.brand-name {
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: -0.4px;
-}
-
-.brand-subtitle {
-  margin-top: 4px;
-  color: #7c3aed;
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: 2px;
 }
 
 /* Navigation */
@@ -105,67 +142,83 @@ a {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+
+  gap: 28px;
   margin-left: auto;
 }
 
 .nav-link {
   position: relative;
 
-  color: #5b6475;
+  color: #625A53;
+
   font-size: 14px;
   font-weight: 600;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: #7c3aed;
+  color: var(--rps-brown-800);
 }
 
 .nav-link.active::after {
   content: "";
 
   position: absolute;
+
   left: 50%;
-  bottom: -10px;
+  bottom: -11px;
 
-  width: 5px;
-  height: 5px;
+  width: 18px;
+  height: 2px;
 
-  border-radius: 50%;
+  border-radius: 2px;
 
-  background: #7c3aed;
+  background: var(--rps-bronze);
 
   transform: translateX(-50%);
 }
 
+/* Download */
+
 .nav-download {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+
   gap: 8px;
 
-  padding: 11px 17px;
+  padding: 11px 18px;
 
-  border-radius: 10px;
+  border-radius: 8px;
 
-  background: #7c3aed;
-  color: white;
+  background: var(--rps-brown-800);
+  color: #ffffff;
 
   font-size: 13px;
   font-weight: 700;
 
-  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.18);
+  box-shadow: var(--rps-shadow-sm);
 
   transition:
+    background 0.2s ease,
     transform 0.2s ease,
-    background 0.2s ease;
+    box-shadow 0.2s ease;
 }
 
 .nav-download:hover {
-  background: #6d28d9;
-  transform: translateY(-2px);
+  background: var(--rps-brown-900);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--rps-shadow-md);
+}
+
+.nav-download svg {
+  color: var(--rps-gold);
 }
 
 /* Mobile */
@@ -8565,4 +8618,967 @@ a {
     font-size: 11px;
   }
 
+}
+
+/* =========================================================
+   RPS ASSOCIATED — PROFESSIONAL BRAND THEME
+   Paste at the VERY END of index.css
+========================================================= */
+
+
+/* =========================================================
+   01 — BRAND VARIABLES
+========================================================= */
+
+:root {
+  --rps-espresso: #2B1D16;
+  --rps-brown: #4A3022;
+  --rps-brown-soft: #684837;
+
+  --rps-bronze: #9A7044;
+  --rps-gold: #B58A55;
+
+  --rps-ivory: #FAF8F4;
+  --rps-cream: #F3EEE6;
+  --rps-warm-white: #FFFFFF;
+
+  --rps-text: #29231F;
+  --rps-text-soft: #6F665E;
+  --rps-text-muted: #958B81;
+
+  --rps-border: #E5DED5;
+  --rps-border-dark: #D3C7BA;
+
+  --rps-success: #4F735C;
+
+  --rps-shadow-sm:
+    0 4px 16px rgba(43, 29, 22, 0.055);
+
+  --rps-shadow-md:
+    0 12px 35px rgba(43, 29, 22, 0.08);
+
+  --rps-shadow-lg:
+    0 25px 60px rgba(43, 29, 22, 0.11);
+}
+
+
+/* =========================================================
+   02 — GLOBAL BODY
+========================================================= */
+
+body {
+  background: var(--rps-warm-white);
+  color: var(--rps-text);
+}
+
+
+/* =========================================================
+   03 — NAVBAR
+========================================================= */
+
+.site-header {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--rps-border);
+
+  box-shadow: 0 2px 12px rgba(43, 29, 22, 0.025);
+}
+
+.navbar {
+  height: 78px;
+}
+
+.nav-link {
+  color: #625A53;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--rps-brown);
+}
+
+.nav-link.active::after {
+  width: 18px;
+  height: 2px;
+
+  border-radius: 2px;
+
+  background: var(--rps-bronze);
+}
+
+.nav-download {
+  border-radius: 8px;
+
+  background: var(--rps-espresso);
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.nav-download:hover {
+  background: #1E140F;
+
+  box-shadow: var(--rps-shadow-md);
+}
+
+.nav-download svg {
+  color: var(--rps-gold);
+}
+
+.mobile-menu-button {
+  border-color: var(--rps-border);
+  background: var(--rps-warm-white);
+  color: var(--rps-espresso);
+}
+
+.mobile-download {
+  border-radius: 8px;
+  background: var(--rps-espresso);
+}
+
+
+/* =========================================================
+   04 — GLOBAL SECTION LABEL
+========================================================= */
+
+.section-label {
+  color: var(--rps-bronze);
+}
+
+.section-label svg {
+  color: var(--rps-bronze);
+}
+
+
+/* =========================================================
+   05 — GLOBAL TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3 {
+  color: var(--rps-espresso);
+}
+
+h2 span,
+h1 span {
+  color: var(--rps-bronze);
+}
+
+
+/* =========================================================
+   06 — HERO
+========================================================= */
+
+.hero-section {
+  background:
+    linear-gradient(
+      90deg,
+      #FFFFFF 0%,
+      #FFFFFF 58%,
+      var(--rps-ivory) 100%
+    );
+}
+
+.hero-background-shape {
+  opacity: 0.35;
+}
+
+.hero-eyebrow {
+  color: var(--rps-bronze);
+}
+
+.hero-eyebrow svg {
+  color: var(--rps-bronze);
+}
+
+.hero-content h1 {
+  color: var(--rps-espresso);
+}
+
+.hero-content h1 span {
+  color: var(--rps-bronze);
+}
+
+.hero-description {
+  color: var(--rps-text-soft);
+}
+
+.hero-trust div {
+  color: var(--rps-text-soft);
+}
+
+.hero-trust svg {
+  color: var(--rps-bronze);
+}
+
+
+/* =========================================================
+   07 — PRIMARY / SECONDARY BUTTONS
+========================================================= */
+
+.primary-button {
+  border: 1px solid var(--rps-espresso);
+  border-radius: 8px;
+
+  background: var(--rps-espresso);
+  color: #FFFFFF;
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.primary-button:hover {
+  background: #1E140F;
+
+  box-shadow: var(--rps-shadow-md);
+}
+
+.primary-button svg:last-child {
+  color: var(--rps-gold);
+}
+
+.secondary-button {
+  border: 1px solid var(--rps-border-dark);
+  border-radius: 8px;
+
+  background: #FFFFFF;
+  color: var(--rps-brown);
+}
+
+.secondary-button:hover {
+  border-color: var(--rps-bronze);
+  background: var(--rps-ivory);
+}
+
+
+/* =========================================================
+   08 — HERO PHONE / APP SHOWCASE
+========================================================= */
+
+.app-showcase {
+  border-color: #181411;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 35px 75px rgba(43, 29, 22, 0.15),
+    0 10px 25px rgba(43, 29, 22, 0.06);
+}
+
+.app-top {
+  background:
+    linear-gradient(
+      135deg,
+      var(--rps-espresso),
+      var(--rps-brown)
+    );
+}
+
+.app-avatar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.app-service {
+  border-color: var(--rps-border);
+  background: #FCFBF9;
+}
+
+.app-service.active {
+  border-color: #D8C6AF;
+  background: var(--rps-ivory);
+}
+
+.service-icon {
+  background: var(--rps-cream);
+  color: var(--rps-bronze);
+}
+
+.app-service span {
+  color: var(--rps-text-muted);
+}
+
+
+/* =========================================================
+   09 — SERVICES
+========================================================= */
+
+.services-section {
+  background: var(--rps-ivory);
+
+  border-top: 1px solid var(--rps-border);
+}
+
+.services-heading h2 {
+  color: var(--rps-espresso);
+}
+
+.services-heading h2 span {
+  color: var(--rps-bronze);
+}
+
+.services-heading p {
+  color: var(--rps-text-soft);
+}
+
+.service-card,
+.ironing-service-card {
+  border-color: var(--rps-border);
+
+  border-radius: 14px;
+
+  background: #FFFFFF;
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.service-card:hover,
+.ironing-service-card:hover {
+  border-color: #D5C4B2;
+
+  box-shadow: var(--rps-shadow-md);
+}
+
+.service-card-icon,
+.ironing-service-icon {
+  background: var(--rps-cream);
+  color: var(--rps-bronze);
+}
+
+.service-card-divider {
+  background: var(--rps-border);
+}
+
+.service-card p,
+.ironing-service-card p {
+  color: var(--rps-text-soft);
+}
+
+.service-feature svg,
+.ironing-benefit svg {
+  color: var(--rps-bronze);
+}
+
+
+/* =========================================================
+   10 — SERVICES CTA
+========================================================= */
+
+.services-order-cta,
+.ironing-delivery {
+  border: 1px solid #DCCFBE;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #FBF8F2,
+      #F3EDE3
+    );
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.services-order-icon,
+.ironing-delivery-icon {
+  background: var(--rps-espresso);
+  color: var(--rps-gold);
+}
+
+.services-order-content h3,
+.ironing-delivery-content h2 {
+  color: var(--rps-espresso);
+}
+
+.services-order-content p,
+.ironing-delivery-content p {
+  color: var(--rps-text-soft);
+}
+
+.services-order-button,
+.ironing-order-button,
+.services-app-button {
+  border-radius: 8px;
+
+  background: var(--rps-espresso);
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.services-order-button:hover,
+.ironing-order-button:hover,
+.services-app-button:hover {
+  background: #1E140F;
+}
+
+
+/* =========================================================
+   11 — HOW IT WORKS
+========================================================= */
+
+.how-it-works {
+  background: #FFFFFF;
+}
+
+.how-it-works-heading h2 {
+  color: var(--rps-espresso);
+}
+
+.how-it-works-heading h2 span {
+  color: var(--rps-bronze);
+}
+
+.how-it-works-heading p {
+  color: var(--rps-text-soft);
+}
+
+.process-number {
+  color: var(--rps-bronze);
+}
+
+.process-icon {
+  border-color: var(--rps-border);
+  background: var(--rps-ivory);
+  color: var(--rps-bronze);
+}
+
+.process-label {
+  color: var(--rps-bronze);
+}
+
+.process-content h3 {
+  color: var(--rps-espresso);
+}
+
+.process-content p {
+  color: var(--rps-text-soft);
+}
+
+.process-detail svg {
+  color: var(--rps-bronze);
+}
+
+.process-connector span {
+  background: var(--rps-border-dark);
+}
+
+
+/* =========================================================
+   12 — APP PAGE
+========================================================= */
+
+.our-app-section {
+  background: var(--rps-ivory);
+}
+
+.our-app-heading h2 {
+  color: var(--rps-espresso);
+}
+
+.our-app-heading h2 span {
+  color: var(--rps-bronze);
+}
+
+.our-app-heading p {
+  color: var(--rps-text-soft);
+}
+
+.app-phone-glow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(181, 138, 85, 0.14),
+      transparent 65%
+    );
+}
+
+.app-platform-badge {
+  border-color: var(--rps-border);
+  background: #FFFFFF;
+  color: var(--rps-brown);
+}
+
+.app-platform-badge svg {
+  color: var(--rps-bronze);
+}
+
+
+/* APP PHONE */
+
+.app-phone {
+  border-color: #17120F;
+
+  background: #FFFFFF;
+
+  box-shadow:
+    0 28px 60px rgba(43, 29, 22, 0.15);
+}
+
+.app-phone-header {
+  background:
+    linear-gradient(
+      135deg,
+      var(--rps-espresso),
+      var(--rps-brown)
+    );
+}
+
+.app-phone-avatar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.app-service-card {
+  border-color: var(--rps-border);
+  background: #FCFBF9;
+}
+
+.app-service-card-active {
+  border-color: #D5C1A6;
+  background: var(--rps-ivory);
+}
+
+.app-service-icon {
+  background: var(--rps-cream);
+  color: var(--rps-bronze);
+}
+
+.phone-order-card,
+.app-order-card {
+  border-color: var(--rps-border);
+  background: #FFFFFF;
+}
+
+.phone-order-check {
+  color: var(--rps-success);
+}
+
+.phone-progress-line {
+  background: var(--rps-border);
+}
+
+.phone-progress-line span {
+  background: var(--rps-bronze);
+}
+
+.phone-nav-item.active {
+  color: var(--rps-brown);
+}
+
+.phone-nav-item svg {
+  color: inherit;
+}
+
+
+/* APP FEATURES */
+
+.app-feature-heading h2 {
+  color: var(--rps-espresso);
+}
+
+.app-feature-heading h2 span {
+  color: var(--rps-bronze);
+}
+
+.app-feature {
+  border-color: var(--rps-border);
+  background: #FFFFFF;
+
+  border-radius: 12px;
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.app-feature:hover {
+  border-color: #D6C5B2;
+  box-shadow: var(--rps-shadow-md);
+}
+
+.app-feature-icon {
+  background: var(--rps-cream);
+  color: var(--rps-bronze);
+}
+
+.app-feature-content h3 {
+  color: var(--rps-espresso);
+}
+
+.app-feature-content p {
+  color: var(--rps-text-soft);
+}
+
+.app-benefits svg {
+  color: var(--rps-success);
+}
+
+
+/* DOWNLOAD BUTTONS */
+
+.app-download-button {
+  border-radius: 8px;
+
+  background: var(--rps-espresso);
+  color: #FFFFFF;
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+.app-download-button:hover {
+  background: #1E140F;
+}
+
+.app-download-button svg {
+  color: var(--rps-gold);
+}
+
+.app-ios-download {
+  background: #FFFFFF;
+  color: var(--rps-espresso);
+
+  border: 1px solid var(--rps-border-dark);
+}
+
+.app-ios-download:hover {
+  background: var(--rps-ivory);
+}
+
+
+/* =========================================================
+   13 — FLOATING BADGES
+   Keep animation, remove AI-looking purple treatment
+========================================================= */
+
+.floating-status,
+.floating-location,
+.app-floating-badge {
+  border: 1px solid var(--rps-border);
+
+  background: rgba(255, 255, 255, 0.96);
+
+  color: var(--rps-text);
+
+  box-shadow: var(--rps-shadow-md);
+}
+
+.floating-status svg,
+.floating-location svg,
+.app-floating-badge svg {
+  color: var(--rps-bronze);
+}
+
+
+/* =========================================================
+   14 — ABOUT
+========================================================= */
+
+.about-section {
+  background: #FFFFFF;
+}
+
+.about-section h1,
+.about-section h2,
+.about-section h3 {
+  color: var(--rps-espresso);
+}
+
+.about-section span {
+  color: var(--rps-bronze);
+}
+
+
+/* =========================================================
+   15 — CONTACT
+========================================================= */
+
+.contact-section {
+  background: var(--rps-ivory);
+}
+
+.contact-section h1,
+.contact-section h2,
+.contact-section h3 {
+  color: var(--rps-espresso);
+}
+
+.contact-section span {
+  color: var(--rps-bronze);
+}
+
+.contact-card,
+.contact-form,
+.contact-info-card {
+  border-color: var(--rps-border);
+  background: #FFFFFF;
+
+  box-shadow: var(--rps-shadow-sm);
+}
+
+
+/* =========================================================
+   16 — FOOTER
+========================================================= */
+
+.footer {
+  background: var(--rps-espresso);
+}
+
+.footer-logo-box {
+  background: var(--rps-bronze);
+  color: #FFFFFF;
+}
+
+.footer-logo-text strong {
+  color: #FFFFFF;
+}
+
+.footer-logo-text small {
+  color: var(--rps-gold);
+}
+
+.footer-brand > p {
+  color: #C8BCB1;
+}
+
+.footer-contact-mini a,
+.footer-contact-mini div {
+  color: #AFA39A;
+}
+
+.footer-contact-mini a:hover {
+  color: #E1D0BC;
+}
+
+.footer-contact-mini svg {
+  color: var(--rps-gold);
+}
+
+.footer-column h3 {
+  color: #FFFFFF;
+}
+
+.footer-column a {
+  color: #AFA39A;
+}
+
+.footer-column a:hover {
+  color: #E1D0BC;
+}
+
+.footer-column a svg {
+  color: var(--rps-gold);
+}
+
+.footer-cta-icon {
+  background: rgba(181, 138, 85, 0.13);
+  color: var(--rps-gold);
+}
+
+.footer-cta h3 {
+  color: #FFFFFF;
+}
+
+.footer-cta .purple-text {
+  color: var(--rps-gold);
+}
+
+.footer-cta p {
+  color: #AFA39A;
+}
+
+.footer-cta-button {
+  background: #FFFFFF;
+  color: var(--rps-espresso);
+
+  border-radius: 8px;
+}
+
+.footer-cta-button:hover {
+  background: var(--rps-cream);
+}
+
+.footer-divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-bottom {
+  color: #AFA39A;
+}
+
+.footer-bottom strong {
+  color: #FFFFFF;
+}
+
+.footer-bottom-links a {
+  color: #AFA39A;
+}
+
+.footer-bottom-links a:hover {
+  color: #E1D0BC;
+}
+
+.back-to-top {
+  color: #D7C7B8;
+}
+
+
+/* =========================================================
+   17 — REMOVE PURPLE-LIKE VISUAL EFFECTS
+========================================================= */
+
+.hero-section::before,
+.hero-section::after,
+.services-section::before,
+.services-section::after,
+.our-app-section::before,
+.our-app-section::after {
+  background-color: transparent;
+}
+
+
+/* =========================================================
+   18 — FORM ELEMENTS
+========================================================= */
+
+input,
+textarea,
+select {
+  border-color: var(--rps-border);
+  color: var(--rps-text);
+  background: #FFFFFF;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--rps-bronze);
+
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(154, 112, 68, 0.10);
+}
+
+
+/* =========================================================
+   19 — RESPONSIVE SAFETY
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .site-header {
+    box-shadow: 0 2px 10px rgba(43, 29, 22, 0.035);
+  }
+
+  .primary-button,
+  .secondary-button,
+  .nav-download,
+  .mobile-download,
+  .services-order-button,
+  .app-download-button {
+    border-radius: 8px;
+  }
+
+  .service-card,
+  .ironing-service-card,
+  .app-feature {
+    border-radius: 12px;
+  }
+}
+
+/* =========================================================
+   RPS — REMOVE REMAINING PURPLE FROM PHONE UI
+========================================================= */
+
+.app-showcase .app-top,
+.app-phone .app-phone-header {
+  background: linear-gradient(
+    135deg,
+    #2B1D16 0%,
+    #4A3022 100%
+  ) !important;
+}
+
+.app-showcase .app-service.active,
+.app-phone .app-service-card-active {
+  border-color: #D5C1A6 !important;
+  background: #FAF8F4 !important;
+}
+
+.app-showcase .service-icon,
+.app-phone .app-service-icon,
+.app-phone .app-order-icon,
+.app-feature-icon {
+  background: #F3EEE6 !important;
+  color: #9A7044 !important;
+}
+
+.app-showcase .app-service,
+.app-phone .app-service-card {
+  border-color: #E5DED5 !important;
+}
+
+.app-showcase .app-progress,
+.app-phone .phone-progress-line {
+  background: #E5DED5 !important;
+}
+
+.app-showcase .app-progress span,
+.app-phone .phone-progress-line span {
+  background: #9A7044 !important;
+}
+
+.app-showcase .app-status,
+.app-phone .app-order-card,
+.app-phone .phone-order-card {
+  border-color: #E5DED5 !important;
+  background: #FCFBF9 !important;
+}
+
+.app-phone .phone-order-check,
+.app-phone .phone-nav-item.active {
+  color: #4A3022 !important;
+}
+
+
+/* Remove purple ambient glow */
+
+.hero-section::before,
+.hero-section::after,
+.our-app-section::before,
+.our-app-section::after,
+.app-phone-glow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(181, 138, 85, 0.08),
+      transparent 68%
+    ) !important;
+}
+
+
+/* App download buttons */
+
+.app-download-button {
+  background: #2B1D16 !important;
+  border-color: #2B1D16 !important;
+}
+
+.app-download-button:hover {
+  background: #1E140F !important;
+}
+
+.app-ios-download {
+  background: #FFFFFF !important;
+  color: #2B1D16 !important;
+  border-color: #D3C7BA !important;
+}
+
+
+/* Platform badges */
+
+.app-platform-badge {
+  border-color: #E5DED5 !important;
+  background: #FFFFFF !important;
+  color: #4A3022 !important;
+}
+
+.app-platform-badge svg {
+  color: #9A7044 !important;
 }
